@@ -89,7 +89,7 @@ window.SITE = {
 
   /* ── Faixa de campanha (troque o texto ou desligue com ativa: false) ── */
   campanha: {
-    ativa: true,
+    ativa: false,
     texto: "Natal e Réveillon: garanta o suco da sua ceia.",
     botao: "Encomendar",
     link: "#festas",

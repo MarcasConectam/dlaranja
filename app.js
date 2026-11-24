@@ -152,7 +152,8 @@
     festas: "Olá, D'Laranja! Quero encomendar suco para uma festa.",
     eventos: "Olá, D'Laranja! Quero um orçamento para um evento.",
     revenda: "Olá, D'Laranja! Quero revender os sucos no meu comércio.",
-    assinatura: "Olá, D'Laranja! Quero assinar o suco semanal.",
+    mimosa: "Olá, D'Laranja! Quero encomendar suco de laranja para fazer mimosa na ceia.",
+    encomendar: "Olá, D'Laranja! Quero encomendar suco de laranja para fazer mimosa na ceia.",
   };
   const setWhats = (msg) => { if (whats) { whats.href = linkWhats(msg || msgPorSecao.inicio); } };
   setWhats();
@@ -296,11 +297,34 @@
     campoItens.value = veioCalc;
     setTimeout(() => { const f = document.querySelector("form[data-form=festa]"); f && f.scrollIntoView({ block: "start" }); }, 400);
   }
+  // Página da mimosa: calculadora e prazo
+  const cm = document.querySelector("[data-calc-mimosa]");
+  let calcMimosa = "";
+  if (cm) {
+    const mc = cm.querySelector("#m-convidados"), mt = cm.querySelector("#m-tacas");
+    const rodarM = () => {
+      const n = Math.max(0, +mc.value || 0), t = Math.max(1, +mt.value || 1);
+      const litros = Math.ceil((n * t * 75) / 500) / 2; // 75 ml de suco por taça, arredonda para 0,5 L
+      cm.querySelector("[data-m-litros]").textContent = litros.toLocaleString("pt-BR");
+      const emb = n ? embalar(litros) : "";
+      cm.querySelector("[data-m-embalagens]").textContent = emb ? `Sugestão: ${emb}.` : "";
+      calcMimosa = n ? `Mimosa para ${n} convidados, ${t} ${t > 1 ? "taças" : "taça"} por pessoa: cerca de ${litros.toLocaleString("pt-BR")} L de suco de laranja (${emb})` : "";
+    };
+    mc.addEventListener("input", rodarM); mt.addEventListener("input", rodarM); rodarM();
+    cm.querySelector("[data-m-usar]").addEventListener("click", () => {
+      const t = document.querySelector("#mi-itens");
+      if (t && calcMimosa) { t.value = calcMimosa + (t.value ? "\n" + t.value : ""); t.focus(); }
+      medir("usar_calculadora", { tipo: "mimosa" });
+    });
+  }
+  const miData = document.querySelector("#mi-data");
+  if (miData) { const min = new Date(); min.setDate(min.getDate() + (+F.prazoMinimoDias || 0)); miData.min = min.toISOString().slice(0, 10); }
   const kits = document.querySelector("[data-kits]");
   if (kits) kits.innerHTML = (F.kits || []).map((k) => `<li><strong>${k.nome}</strong>${ok(k.itens) ? k.itens : "Monte o seu com a gente pelo WhatsApp."} ${mostrarPrecos && ok(k.preco) ? "· " + brl(k.preco) : ""}</li>`).join("");
   set("[data-prazo]", ok(F.prazoMinimoDias) ? `Peça com pelo menos ${F.prazoMinimoDias} ${F.prazoMinimoDias > 1 ? "dias" : "dia"} de antecedência.` : "Encomende com antecedência. A data é confirmada pelo WhatsApp.");
   set("[data-sinal]", ok(F.sinal) ? F.sinal : "Combinado na confirmação da encomenda.");
   const bloq = (F.datasBloqueadas || []).map((d) => d.split("-").reverse().join("/"));
+  set("[data-mimosa-prazo]", "Para receber em 24/12 ou 31/12, encomende com antecedência. A gente confirma a data pelo WhatsApp.");
   set("[data-bloqueadas]", bloq.length ? `Sem novas encomendas em ${bloq.join(" e ")}.` : "Nenhuma no momento.");
   const dataFesta = document.querySelector("#fe-data");
   if (dataFesta) {
@@ -324,8 +348,8 @@
   set("[data-dia-entrega]", ok(A.diaEntrega) ? `Entrega ${A.diaEntrega}.` : "O dia da entrega a gente combina pelo WhatsApp.");
 
   /* ── Formulários → WhatsApp (+ cópia por e-mail quando configurado) ── */
-  const titulos = { festa: "Encomenda de festa", evento: "Orçamento de evento", revenda: "Cadastro de revendedor" };
-  const rotulos = { nome: "Nome", telefone: "WhatsApp", data: "Data", horario: "Horário", recebimento: "Recebimento", endereco: "Endereço",
+  const titulos = { mimosa: "Encomenda de suco para mimosa", festa: "Encomenda de festa", evento: "Orçamento de evento", revenda: "Cadastro de revendedor" };
+  const rotulos = { ceia: "Ceia", nome: "Nome", telefone: "WhatsApp", data: "Data", horario: "Horário", recebimento: "Recebimento", endereco: "Endereço",
     itens: "Pedido", ofertas: "Aceita ofertas", pessoas: "Pessoas", local: "Local", formato: "Formato", estabelecimento: "Estabelecimento",
     tipo: "Tipo de negócio", bairro: "Bairro", volume: "Litros por semana" };
   const temEmail = ok(S.contato && S.contato.email) && /@/.test(S.contato.email);

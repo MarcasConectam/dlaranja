@@ -381,3 +381,10 @@ body.tem-carrinho .whats { bottom: 96px; }
 .pagina-calc .calculadora { width: 100%; max-width: var(--largura); }
 .titulo-calc { font-size: clamp(34px, 4.6vw, 64px); }
 .pagina-calc .whats { transform: scale(1); }
+
+/* Página da mimosa */
+.mimosa-topo { min-height: 100svh; padding-top: 16vh; }
+.titulo-mimosa { font-size: clamp(36px, 4.8vw, 68px); }
+#quanto .calculadora { width: 100%; max-width: var(--largura); }
+.aviso-alcool { max-width: var(--largura); width: 100%; text-align: center; font-size: 13px; margin: 4px auto 0; color: var(--texto-suave); }
+.pagina-mimosa .whats { transform: scale(1); }
