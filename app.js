@@ -150,7 +150,6 @@
     inicio: S.whatsapp && S.whatsapp.mensagem,
     sucos: "Olá, D'Laranja! Quero fazer um pedido.",
     festas: "Olá, D'Laranja! Quero encomendar suco para uma festa.",
-    eventos: "Olá, D'Laranja! Quero um orçamento para um evento.",
     revenda: "Olá, D'Laranja! Quero revender os sucos no meu comércio.",
     mimosa: "Olá, D'Laranja! Quero encomendar suco de laranja para fazer mimosa na ceia.",
     encomendar: "Olá, D'Laranja! Quero encomendar suco de laranja para fazer mimosa na ceia.",
