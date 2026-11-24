@@ -371,5 +371,7 @@
   ld.areaServed = E.cidade || undefined;
   if (temWhats) ld.telephone = "+" + numWhats;
   if (E.horarioSchema) ld.openingHours = E.horarioSchema;
+  if (ok(E.razaoSocial)) ld.legalName = E.razaoSocial;
+  if (ok(E.cnpj)) ld.taxID = E.cnpj;
   const sc = document.createElement("script"); sc.type = "application/ld+json"; sc.textContent = JSON.stringify(ld); document.head.appendChild(sc);
 })();

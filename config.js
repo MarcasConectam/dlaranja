@@ -22,8 +22,8 @@ window.SITE = {
   instagram: "d.laranja", // sem @
 
   empresa: {
-    razaoSocial: null,
-    cnpj: null,
+    razaoSocial: "RR Baioco LTDA ME",
+    cnpj: "26.183.249/0001-73",
     endereco: "Av. Celeste Faé, 687 - Nossa Sra. da Conceição, Linhares - ES, 29900-430",
     cidade: "Linhares - ES",
     // Mesmo endereço, separado, para o Google (dados de negócio local):
