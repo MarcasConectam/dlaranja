@@ -365,7 +365,7 @@
   });
 
   /* ── Dados estruturados de negócio local (SEO) ───────────────────── */
-  const ld = { "@context": "https://schema.org", "@type": "JuiceBar", name: "D'Laranja", slogan: S.slogan, image: new URL("assets/logo.png", location.href).href, url: new URL("./", location.href).href };
+  const ld = { "@context": "https://schema.org", "@type": "JuiceBar", name: "D'Laranja", slogan: S.slogan, image: new URL("assets/logo-vertical.png", location.href).href, logo: new URL("assets/icone.png", location.href).href, url: new URL("./", location.href).href };
   const ES = E.enderecoSchema;
   if (ES) ld.address = { "@type": "PostalAddress", streetAddress: ES.rua, addressLocality: ES.cidade, addressRegion: ES.uf, postalCode: ES.cep, addressCountry: "BR" };
   else if (ok(E.endereco)) ld.address = E.endereco;

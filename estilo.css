@@ -366,3 +366,10 @@ body.tem-carrinho .whats { bottom: 96px; }
 .sabor .selo { align-self: flex-start; position: relative; }
 @media (max-width: 1180px) { .cardapio { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .cardapio { grid-template-columns: 1fr; } .sabor-foto { aspect-ratio: 5 / 4; } }
+
+/* Logo vertical (2026-11) */
+.marca-logo { height: 62px; transition: height .4s var(--ease); }
+.topo.rolou .marca-logo { height: 48px; }
+.topo { padding-block: 12px; }
+.rodape-logo { height: 110px; }
+@media (max-width: 760px) { .marca-logo { height: 52px; } .topo.rolou .marca-logo { height: 44px; } }
