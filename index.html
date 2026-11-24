@@ -29,10 +29,12 @@
   <a href="#inicio" class="marca" aria-label="D'Laranja, início">
     <img src="assets/logo-vertical.png" alt="D'Laranja · Suco 100% fruta" class="marca-logo" width="980" height="900">
   </a>
-  <nav class="menu" aria-label="Seções">
+  <a class="topo-cta" href="#sucos">Fazer pedido</a>
+  <button type="button" class="menu-botao" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+  <nav class="menu" id="menu-principal" aria-label="Seções">
     <a href="#sucos">Sucos</a>
     <a href="#festas">Festas</a>
-    <a href="#revenda">Revenda</a>
+    <a href="revenda.html">Revenda</a>
     <a href="#sucos" class="menu-cta">Fazer pedido</a>
   </nav>
 </header>
@@ -95,7 +97,7 @@
         <p>Diga quantos convidados vêm e quanto tempo dura. A gente calcula os litros e entrega gelado.</p>
         <span class="seta">Calcular e encomendar</span>
       </a>
-      <a class="painel caminho revelar" href="#revenda">
+      <a class="painel caminho revelar" href="revenda.html">
         <span class="caminho-num">Negócio</span>
         <h3>Para o seu negócio</h3>
         <p>Padaria, mercadinho, academia, lanchonete ou restaurante: suco do dia na sua geladeira, com entrega em dia fixo.</p>
@@ -190,51 +192,12 @@
     </div>
   </section>
 
-  <!-- 05 · REVENDA -->
-  <section id="revenda" class="secao">
-    <img class="arte arte--direita arte--foto" src="assets/img/garrafas.webp" alt="" loading="lazy">
-    <div class="secao-grade secao-grade--dupla">
-      <div class="painel revelar">
-        <span class="rotulo">05</span>
-        <h2>Seja revendedor</h2>
-        <p>Seu cliente quer suco natural e você não precisa preparar nada atrás do balcão. A gente entrega pronto.</p>
-        <ul class="formatos">
-          <li><strong>Produto do dia</strong><span>Suco feito no dia da entrega.</span></li>
-          <li><strong>Entrega em dia fixo</strong><span>Você sabe quando chega e planeja a geladeira.</span></li>
-          <li><strong>Material de ponto de venda</strong><span>Para o cliente achar a D'Laranja na sua loja.</span></li>
-          <li><strong>Reforço no calor</strong><span>Pedido extra nos dias quentes.</span></li>
-        </ul>
-        <p class="pequeno">Pedido mínimo, dias de entrega e cuidados com refrigeração: a gente explica no primeiro contato.</p>
-      </div>
-      <div class="painel painel--form revelar">
-        <h3>Quero revender</h3>
-        <form class="form" data-form="revenda" novalidate>
-          <div class="campo campo--inteiro"><label for="rv-loja">Nome do estabelecimento</label><input id="rv-loja" name="estabelecimento" required></div>
-          <div class="campo">
-            <label for="rv-tipo">Tipo de negócio</label>
-            <select id="rv-tipo" name="tipo">
-              <option>Padaria</option><option>Mercadinho</option><option>Academia</option>
-              <option>Lanchonete</option><option>Restaurante</option><option>Outro</option>
-            </select>
-          </div>
-          <div class="campo"><label for="rv-bairro">Bairro</label><input id="rv-bairro" name="bairro" required></div>
-          <div class="campo"><label for="rv-vol">Litros por semana (estimativa)</label><input id="rv-vol" name="volume" inputmode="numeric"></div>
-          <div class="campo"><label for="rv-nome">Seu nome</label><input id="rv-nome" name="nome" autocomplete="name" required></div>
-          <div class="campo campo--inteiro"><label for="rv-tel">WhatsApp</label><input id="rv-tel" name="telefone" type="tel" inputmode="tel" required></div>
-          <input type="text" name="_honey" class="pote" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit" class="botao campo--inteiro">Quero revender</button>
-          <p class="form-status campo--inteiro" role="status" aria-live="polite"></p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 · ONDE ESTAMOS -->
+  <!-- 05 · ONDE ESTAMOS -->
   <section id="contato" class="secao">
     <img class="arte arte--esquerda arte--foto" src="assets/img/loja.webp" alt="" loading="lazy">
     <div class="secao-grade secao-grade--direita">
       <div class="painel revelar">
-        <span class="rotulo">06</span>
+        <span class="rotulo">05</span>
         <h2>Passa aqui na loja</h2>
         <dl class="regras">
           <div><dt>Endereço</dt><dd data-endereco></dd></div>

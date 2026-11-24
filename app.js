@@ -127,6 +127,18 @@
   document.querySelectorAll(".revelar").forEach((el) => io.observe(el));
   document.querySelectorAll("[data-ano]").forEach((el) => (el.textContent = new Date().getFullYear()));
 
+  /* ── Menu no celular ─────────────────────────────────────────────── */
+  const menuBotao = document.querySelector(".menu-botao"), menuNav = document.querySelector(".menu");
+  if (menuBotao && menuNav) {
+    const fechar = () => { menuNav.classList.remove("aberto"); menuBotao.setAttribute("aria-expanded", "false"); menuBotao.textContent = "Menu"; };
+    menuBotao.addEventListener("click", () => {
+      const abre = !menuNav.classList.contains("aberto");
+      menuNav.classList.toggle("aberto", abre); menuBotao.setAttribute("aria-expanded", String(abre)); menuBotao.textContent = abre ? "Fechar" : "Menu";
+    });
+    menuNav.addEventListener("click", (e) => { if (e.target.closest("a")) fechar(); });
+    addEventListener("keydown", (e) => { if (e.key === "Escape") fechar(); });
+  }
+
   /* ══ D'Laranja ═══════════════════════════════════════════════════════ */
   const E = S.empresa || {};
   const pend = (txt) => `<span class="pendente">${txt || "a confirmar"}</span>`;
