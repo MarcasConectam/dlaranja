@@ -283,10 +283,18 @@
     };
     conv.addEventListener("input", rodar); hrs.addEventListener("input", rodar); rodar();
     calc.querySelector("[data-usar-calculo]").addEventListener("click", () => {
-      const t = document.querySelector("#fe-itens");
-      if (t && ultimoCalculo) { t.value = ultimoCalculo + (t.value ? "\n" + t.value : ""); t.focus(); }
       medir("usar_calculadora", {});
+      const t = document.querySelector("#fe-itens");
+      if (t) { if (ultimoCalculo) { t.value = ultimoCalculo + (t.value ? "\n" + t.value : ""); t.focus(); } return; }
+      location.href = "index.html?calculo=" + encodeURIComponent(ultimoCalculo) + "#festas";
     });
+  }
+  // Vindo da calculadora: preenche o pedido da festa com o cálculo
+  const veioCalc = new URLSearchParams(location.search).get("calculo");
+  const campoItens = document.querySelector("#fe-itens");
+  if (veioCalc && campoItens) {
+    campoItens.value = veioCalc;
+    setTimeout(() => { const f = document.querySelector("form[data-form=festa]"); f && f.scrollIntoView({ block: "start" }); }, 400);
   }
   const kits = document.querySelector("[data-kits]");
   if (kits) kits.innerHTML = (F.kits || []).map((k) => `<li><strong>${k.nome}</strong>${ok(k.itens) ? k.itens : "Monte o seu com a gente pelo WhatsApp."} ${mostrarPrecos && ok(k.preco) ? "· " + brl(k.preco) : ""}</li>`).join("");
