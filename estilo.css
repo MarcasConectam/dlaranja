@@ -413,3 +413,34 @@ body.tem-carrinho .whats { bottom: 96px; }
   .menu .menu-cta { display: none; }
 }
 @media (max-width: 760px) { .menu a:nth-last-child(2) { border-bottom: 0; } }
+
+/* ══ Painéis suaves (2026-11): sem borda e sem recorte duro ═════════════
+   O fundo do painel se dissolve no fundo do site com uma sombra difusa
+   da mesma cor, em vez de terminar numa linha reta. */
+.painel {
+  border: 0;
+  background: rgb(18 15 11 / .5);
+  box-shadow: 0 0 56px 32px rgb(18 15 11 / .5);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+}
+.painel--vidro { background: rgb(18 15 11 / .42); box-shadow: 0 0 70px 40px rgb(18 15 11 / .42); }
+.cartao:hover, .caminho:hover { border-color: transparent; }
+.campanha-painel, .calc-chamada { border: 0; }
+.fala { border-top: 0; padding-top: 0; }
+.item { border-top-color: rgb(255 248 220 / .07); }
+.kits-lista li { border-top-color: rgb(255 248 220 / .07); }
+.campo input, .campo textarea, .campo select { border-color: rgb(255 248 220 / .1); background: rgb(255 255 255 / .05); }
+@media (max-width: 860px) {
+  .sabor, .painel--form, .calculadora, .kits { background: rgb(18 15 11 / .78); box-shadow: 0 0 40px 24px rgb(18 15 11 / .7); }
+}
+/* Fotos dos produtos dissolvidas nas quatro bordas */
+.sabor { overflow: visible; }
+.sabor-foto {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 60%, transparent), linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 60%, transparent), linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}
+/* Leitura do texto sobre o vídeo sem a caixa marcada */
+.momento h1, .momento p, .momento .destaque { text-shadow: 0 2px 28px rgb(0 0 0 / .7), 0 1px 3px rgb(0 0 0 / .5); }
+.painel--vidro { background: radial-gradient(closest-side, rgb(18 15 11 / .6), rgb(18 15 11 / .35) 70%, transparent); box-shadow: none; }
+.painel--vidro { background: radial-gradient(ellipse 75% 70% at 45% 55%, rgb(18 15 11 / .78), rgb(18 15 11 / .55) 50%, transparent 78%); padding-inline: clamp(28px, 4vw, 64px); margin-inline: calc(-1 * clamp(8px, 2vw, 24px)); }
