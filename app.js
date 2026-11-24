@@ -168,8 +168,8 @@
   // Dados da empresa
   set("[data-endereco]", ok(E.endereco) ? E.endereco : (ok(E.cidade) ? `${E.cidade} · ${pend("rua e número")}` : pend()));
   set("[data-horario]", ok(E.horario) ? E.horario : pend());
-  set("[data-area]", ok(E.areaEntrega) ? E.areaEntrega + (ok(E.taxaEntrega) ? `. Taxa: ${E.taxaEntrega}` : "") : pend());
-  set("[data-entrega]", ok(E.areaEntrega) ? E.areaEntrega + (ok(E.taxaEntrega) ? `. Taxa: ${E.taxaEntrega}` : "") : pend("área e taxa a confirmar"));
+  set("[data-area]", ok(E.areaEntrega) ? E.areaEntrega + (ok(E.taxaEntrega) ? `. Taxa: ${E.taxaEntrega}` : "") : "Linhares. Consulte seu bairro e a taxa pelo WhatsApp.");
+  set("[data-entrega]", ok(E.areaEntrega) ? E.areaEntrega + (ok(E.taxaEntrega) ? `. Taxa: ${E.taxaEntrega}` : "") : "Retire na loja ou consulte entrega e taxa pelo WhatsApp.");
   set("[data-razao]", `${ok(E.razaoSocial) ? E.razaoSocial : pend("razão social")} · CNPJ ${ok(E.cnpj) ? E.cnpj : pend()}`);
   set("[data-rodape-endereco]", ok(E.endereco) ? E.endereco : (ok(E.cidade) ? E.cidade : pend("endereço")));
   const P = S.praticas || {};
@@ -190,6 +190,7 @@
   }
 
   /* ── Cardápio e carrinho ─────────────────────────────────────────── */
+  const mostrarPrecos = S.mostrarPrecos === true;
   const tamanhos = S.tamanhos || [], sabores = S.sabores || [];
   const carrinho = new Map(); // chave "sabor|tamanho" → qtd
   const cardapio = document.querySelector("[data-cardapio]");
@@ -206,7 +207,7 @@
             const chave = `${sb.id}|${t.id}`;
             return `<li class="item">
               <span class="item-nome">${t.nome}<small>${t.copos || ""}</small></span>
-              <span class="item-preco">${ok(preco) ? brl(preco) : pend("preço")}</span>
+              ${mostrarPrecos && ok(preco) ? `<span class="item-preco">${brl(preco)}</span>` : ""}
               <div class="qtd" data-chave="${chave}">
                 <button type="button" class="menos" aria-label="Tirar ${sb.nome} ${t.nome}">−</button>
                 <output aria-label="Quantidade de ${sb.nome} ${t.nome}">0</output>
@@ -232,7 +233,7 @@
     const [sid, tid] = chave.split("|");
     const sb = sabores.find((x) => x.id === sid), t = tamanhos.find((x) => x.id === tid);
     const preco = sb && sb.precos ? sb.precos[tid] : null;
-    return { texto: `${q}x ${sb ? sb.nome : sid} ${t ? t.nome : tid}`, preco: ok(preco) ? preco * q : null };
+    return { texto: `${q}x ${sb ? sb.nome : sid} ${t ? t.nome : tid}`, preco: mostrarPrecos && ok(preco) ? preco * q : null };
   };
   function atualizarCarrinho() {
     if (!barra) return;
@@ -243,7 +244,7 @@
     barra.querySelector("[data-carrinho-qtd]").textContent = `${qtd} ${qtd === 1 ? "item" : "itens"}`;
     const semPreco = linhas.some((l) => l.preco === null);
     const total = linhas.reduce((a, l) => a + (l.preco || 0), 0);
-    barra.querySelector("[data-carrinho-total]").textContent = semPreco ? "total confirmado no WhatsApp" : brl(total);
+    barra.querySelector("[data-carrinho-total]").textContent = semPreco ? "valores confirmados no WhatsApp" : brl(total);
   }
   barra && barra.querySelector("[data-carrinho-limpar]").addEventListener("click", () => {
     carrinho.clear(); cardapio && cardapio.querySelectorAll("output").forEach((o) => (o.textContent = 0)); atualizarCarrinho();
@@ -288,9 +289,9 @@
     });
   }
   const kits = document.querySelector("[data-kits]");
-  if (kits) kits.innerHTML = (F.kits || []).map((k) => `<li><strong>${k.nome}</strong>${ok(k.itens) ? k.itens : pend("itens a confirmar")} ${ok(k.preco) ? "· " + brl(k.preco) : ""}</li>`).join("");
-  set("[data-prazo]", ok(F.prazoMinimoDias) ? `Peça com pelo menos ${F.prazoMinimoDias} ${F.prazoMinimoDias > 1 ? "dias" : "dia"} de antecedência.` : pend());
-  set("[data-sinal]", ok(F.sinal) ? F.sinal : pend());
+  if (kits) kits.innerHTML = (F.kits || []).map((k) => `<li><strong>${k.nome}</strong>${ok(k.itens) ? k.itens : "Monte o seu com a gente pelo WhatsApp."} ${mostrarPrecos && ok(k.preco) ? "· " + brl(k.preco) : ""}</li>`).join("");
+  set("[data-prazo]", ok(F.prazoMinimoDias) ? `Peça com pelo menos ${F.prazoMinimoDias} ${F.prazoMinimoDias > 1 ? "dias" : "dia"} de antecedência.` : "Encomende com antecedência. A data é confirmada pelo WhatsApp.");
+  set("[data-sinal]", ok(F.sinal) ? F.sinal : "Combinado na confirmação da encomenda.");
   const bloq = (F.datasBloqueadas || []).map((d) => d.split("-").reverse().join("/"));
   set("[data-bloqueadas]", bloq.length ? `Sem novas encomendas em ${bloq.join(" e ")}.` : "Nenhuma no momento.");
   const dataFesta = document.querySelector("#fe-data");
@@ -306,13 +307,13 @@
     planos.innerHTML = (A.planos || []).map((p) => `
       <div class="painel plano revelar">
         <strong>${p.nome}</strong>
-        <span class="preco">${ok(p.preco) ? brl(p.preco) + " por semana" : pend("preço")}</span>
+        ${mostrarPrecos && ok(p.preco) ? `<span class="preco">${brl(p.preco)} por semana</span>` : ""}
         <a class="botao" href="${linkWhats(`Olá, D'Laranja! Quero assinar o plano de ${p.nome}.`)}" target="_blank" rel="noopener" data-plano>Assinar</a>
       </div>`).join("");
     planos.querySelectorAll(".revelar").forEach((el) => io.observe(el));
     planos.addEventListener("click", (e) => { if (e.target.closest("[data-plano]")) medir("formulario_enviado", { tipo: "assinatura" }); });
   }
-  set("[data-dia-entrega]", ok(A.diaEntrega) ? `Entrega ${A.diaEntrega}.` : `Dia de entrega: ${pend()}`);
+  set("[data-dia-entrega]", ok(A.diaEntrega) ? `Entrega ${A.diaEntrega}.` : "O dia da entrega a gente combina pelo WhatsApp.");
 
   /* ── Formulários → WhatsApp (+ cópia por e-mail quando configurado) ── */
   const titulos = { festa: "Encomenda de festa", evento: "Orçamento de evento", revenda: "Cadastro de revendedor" };

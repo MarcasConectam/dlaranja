@@ -35,6 +35,9 @@ window.SITE = {
     taxaEntrega: null, // ex.: "R$ 5,00" ou "grátis acima de R$ 50"
   },
 
+  // false: o site não mostra preços (valores combinados no WhatsApp). true: mostra os preços abaixo.
+  mostrarPrecos: false,
+
   /* ── Cardápio ────────────────────────────────────────────────────── */
   // preço em reais (número) ou null enquanto não estiver definido.
   tamanhos: [
