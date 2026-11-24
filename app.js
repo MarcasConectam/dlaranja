@@ -196,11 +196,12 @@
   if (cardapio) {
     cardapio.innerHTML = sabores.map((sb) => `
       <article class="painel sabor revelar">
-        <span class="selo">Sem conservantes</span>
+        ${sb.foto ? `<img class="sabor-foto" src="${sb.foto}" alt="Garrafa de ${sb.nome} D'Laranja" loading="lazy" width="720" height="900">` : ""}
+        ${sb.selo ? `<span class="selo">${sb.selo}</span>` : ""}
         <h3>${sb.nome}</h3>
         <p>${sb.nota || ""}</p>
         <ul class="itens">
-          ${tamanhos.map((t) => {
+          ${tamanhos.filter((t) => !sb.precos || t.id in sb.precos).map((t) => {
             const preco = sb.precos ? sb.precos[t.id] : null;
             const chave = `${sb.id}|${t.id}`;
             return `<li class="item">

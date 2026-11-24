@@ -44,13 +44,19 @@ window.SITE = {
     { id: "2l", nome: "2 litros", copos: "8 copos" },
     { id: "5l", nome: "Galão 5 litros", copos: "20 copos" },
   ],
+  // Cada produto só mostra os tamanhos listados em "precos".
   sabores: [
-    { id: "laranja", nome: "Laranja", nota: "O clássico da casa.", precos: { "300": null, "500": null, "1l": null, "2l": null, "5l": null } },
-    { id: "morango", nome: "Morango com laranja", nota: "Laranja do dia com morango.", precos: { "300": null, "500": null, "1l": null, "2l": null, "5l": null } },
-    { id: "maracuja", nome: "Laranja com maracujá", nota: "Mais azedinho, ótimo bem gelado.", precos: { "300": null, "500": null, "1l": null, "2l": null, "5l": null } },
+    { id: "laranja", nome: "Laranja", nota: "O clássico da casa.", foto: "assets/img/produtos/laranja.webp", selo: "Sem conservantes",
+      precos: { "300": null, "500": null, "1l": null, "2l": null, "5l": null } },
+    { id: "morango", nome: "Laranja com morango", nota: "Laranja do dia com morango.", foto: "assets/img/produtos/morango.webp", selo: "Sem conservantes",
+      precos: { "300": null, "500": null, "1l": null, "2l": null, "5l": null } },
+    { id: "maracuja", nome: "Laranja com maracujá", nota: "Mais azedinho, ótimo bem gelado.", foto: "assets/img/produtos/maracuja.webp", selo: "Sem conservantes",
+      precos: { "300": null, "500": null, "1l": null, "2l": null, "5l": null } },
+    { id: "coco", nome: "Água de coco integral", nota: "Sem adição de açúcar. Sirva bem gelada.", foto: "assets/img/produtos/coco.webp", selo: "Sem conservantes",
+      precos: { "1l": null, "2l": null, "5l": null } },
   ],
   praticas: {
-    validade: null, // ex.: "3 dias na geladeira, fechado"
+    validade: "3 dias na geladeira. A data vem marcada no rótulo.",
     conservar: "Mantenha sempre na geladeira e agite antes de servir.",
   },
 
