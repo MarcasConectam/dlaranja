@@ -23,19 +23,18 @@
 </head>
 <body>
 
-<a class="pular" href="#sucos">Pular para o cardápio</a>
+<a class="pular" href="#caminhos">Pular para o conteúdo</a>
 
 <header class="topo">
   <a href="#inicio" class="marca" aria-label="D'Laranja, início">
     <img src="assets/logo-vertical.png" alt="D'Laranja · Suco 100% fruta" class="marca-logo" width="980" height="900">
   </a>
-  <a class="topo-cta" href="#sucos">Fazer pedido</a>
+  <a class="topo-cta" href="pedido.html">Fazer pedido</a>
   <button type="button" class="menu-botao" aria-expanded="false" aria-controls="menu-principal">Menu</button>
   <nav class="menu" id="menu-principal" aria-label="Seções">
-    <a href="#sucos">Sucos</a>
     <a href="#festas">Festas</a>
     <a href="revenda.html">Revenda</a>
-    <a href="#sucos" class="menu-cta">Fazer pedido</a>
+    <a href="pedido.html" class="menu-cta">Fazer pedido</a>
   </nav>
 </header>
 
@@ -61,7 +60,7 @@
       <div class="momento momento--centro" data-de="0.72" data-ate="1">
         <div class="painel painel--vidro">
           <p class="destaque">Feito hoje, sem conservantes.</p>
-          <a href="#sucos" class="botao">Fazer pedido</a>
+          <a href="pedido.html" class="botao">Fazer pedido</a>
         </div>
       </div>
 
@@ -85,7 +84,7 @@
       <h2>Para quem é o suco hoje?</h2>
     </div>
     <div class="caminhos">
-      <a class="painel caminho revelar" href="#sucos" data-whats="Olá, D'Laranja! Quero fazer um pedido para casa.">
+      <a class="painel caminho revelar" href="pedido.html" data-whats="Olá, D'Laranja! Quero fazer um pedido para casa.">
         <span class="caminho-num">Casa</span>
         <h3>Para a sua casa</h3>
         <p>Garrafa de 300 ml para o lanche ou de 2 litros para a semana. Monte o pedido e mande pelo WhatsApp.</p>
@@ -106,30 +105,12 @@
     </div>
   </section>
 
-  <!-- 02 · CARDÁPIO + CARRINHO -->
-  <section id="sucos" class="secao secao--larga secao--cardapio">
-    <img class="arte arte--direita arte--foto" src="assets/img/trio.webp" alt="" loading="lazy">
-    <div class="painel painel--cabecalho revelar">
-      <span class="rotulo">02</span>
-      <h2>Nossos sucos e água de coco</h2>
-      <p>Escolha o sabor, o tamanho e a quantidade. O pedido vai pronto para o nosso WhatsApp, e a gente responde com os valores e a entrega.</p>
-    </div>
-    <div class="cardapio" data-cardapio></div>
-    <div class="painel info-pratica revelar">
-      <dl>
-        <div><dt>Validade</dt><dd data-validade></dd></div>
-        <div><dt>Como conservar</dt><dd data-conservar></dd></div>
-        <div><dt>Entrega</dt><dd data-entrega></dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- 03 · COMO FAZEMOS -->
+  <!-- 02 · COMO FAZEMOS -->
   <section id="como-fazemos" class="secao">
     <img class="arte arte--esquerda" src="assets/img/processo.webp" alt="" loading="lazy">
     <div class="secao-grade secao-grade--direita">
       <div class="painel revelar">
-        <span class="rotulo">03</span>
+        <span class="rotulo">02</span>
         <h2>Como fazemos</h2>
         <ol class="passos">
           <li><strong>Selecionamos as melhores laranjas</strong><span>Escolhidas uma a uma. A laranja é o único ingrediente do suco, então ela precisa ser boa.</span></li>
@@ -141,11 +122,11 @@
     </div>
   </section>
 
-  <!-- 04 · FESTAS -->
+  <!-- 03 · FESTAS -->
   <section id="festas" class="secao secao--larga">
     <img class="arte arte--direita arte--foto" src="assets/img/galao-laranja.webp" alt="" loading="lazy">
     <div class="painel painel--cabecalho revelar">
-      <span class="rotulo">04</span>
+      <span class="rotulo">03</span>
       <h2>Suco de verdade para a sua festa ou evento</h2>
       <p>Aniversário, ceia, confraternização, casamento, formatura ou evento da empresa. Você não tem trabalho nenhum: o suco chega gelado, em garrafas ou galões, pronto para servir.</p>
     </div>
@@ -192,12 +173,12 @@
     </div>
   </section>
 
-  <!-- 05 · ONDE ESTAMOS -->
+  <!-- 04 · ONDE ESTAMOS -->
   <section id="contato" class="secao">
     <img class="arte arte--esquerda arte--foto" src="assets/img/loja.webp" alt="" loading="lazy">
     <div class="secao-grade secao-grade--direita">
       <div class="painel revelar">
-        <span class="rotulo">05</span>
+        <span class="rotulo">04</span>
         <h2>Passa aqui na loja</h2>
         <dl class="regras">
           <div><dt>Endereço</dt><dd data-endereco></dd></div>
@@ -214,18 +195,6 @@
   </section>
 
 </main>
-
-<!-- Carrinho (barra fixa) -->
-<div class="carrinho" data-carrinho hidden>
-  <div class="carrinho-resumo">
-    <strong data-carrinho-qtd></strong>
-    <span data-carrinho-total></span>
-  </div>
-  <div class="carrinho-acoes">
-    <button type="button" class="carrinho-limpar" data-carrinho-limpar>Limpar</button>
-    <button type="button" class="botao" data-carrinho-enviar>Enviar pedido</button>
-  </div>
-</div>
 
 <footer class="rodape">
   <div class="painel rodape-painel">

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fazer pedido · Sucos e água de coco · D'Laranja</title>
+  <meta name="description" content="Peça suco de laranja, laranja com morango, laranja com maracujá e água de coco D'Laranja em Linhares: 300 ml, 500 ml, 1 L, 2 L e 5 L. O pedido vai pronto para o WhatsApp.">
+  <meta property="og:title" content="Fazer pedido · D'Laranja">
+  <meta property="og:description" content="Monte seu pedido e mande pelo WhatsApp. Feito hoje, sem conservantes.">
+  <meta property="og:image" content="https://dlaranja.com/assets/img/trio.webp">
+  <meta property="og:url" content="https://dlaranja.com/pedido.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="theme-color" content="#120F0B">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="assets/icone.png">
+  <link rel="canonical" href="https://dlaranja.com/pedido.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body class="pagina-pedido">
+
+<header class="topo">
+  <a href="index.html" class="marca" aria-label="D'Laranja, início">
+    <img src="assets/logo-vertical.png" alt="D'Laranja · Suco 100% fruta" class="marca-logo" width="980" height="900">
+  </a>
+  <a class="topo-cta" href="pedido.html">Fazer pedido</a>
+  <button type="button" class="menu-botao" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+  <nav class="menu" id="menu-principal" aria-label="Seções">
+    <a href="index.html#festas">Festas</a>
+    <a href="revenda.html">Revenda</a>
+    <a href="pedido.html" class="menu-cta">Fazer pedido</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- CARDÁPIO + CARRINHO -->
+  <section id="sucos" class="secao secao--larga secao--cardapio secao--pagina">
+    <img class="arte arte--direita arte--foto" src="assets/img/trio.webp" alt="" loading="lazy">
+    <div class="painel painel--cabecalho revelar">
+      <span class="rotulo">Fazer pedido</span>
+      <h1 class="titulo-calc">Nossos sucos e água de coco</h1>
+      <p>Escolha o sabor, o tamanho e a quantidade. O pedido vai pronto para o nosso WhatsApp, e a gente responde com os valores e a entrega.</p>
+    </div>
+    <div class="cardapio" data-cardapio></div>
+    <div class="painel info-pratica revelar">
+      <dl>
+        <div><dt>Validade</dt><dd data-validade></dd></div>
+        <div><dt>Como conservar</dt><dd data-conservar></dd></div>
+        <div><dt>Entrega</dt><dd data-entrega></dd></div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<!-- Carrinho (barra fixa) -->
+<div class="carrinho" data-carrinho hidden>
+  <div class="carrinho-resumo">
+    <strong data-carrinho-qtd></strong>
+    <span data-carrinho-total></span>
+  </div>
+  <div class="carrinho-acoes">
+    <button type="button" class="carrinho-limpar" data-carrinho-limpar>Limpar</button>
+    <button type="button" class="botao" data-carrinho-enviar>Enviar pedido</button>
+  </div>
+</div>
+
+<footer class="rodape">
+  <div class="painel rodape-painel">
+    <img src="assets/logo-vertical.png" alt="D'Laranja · Suco 100% fruta" class="rodape-logo" width="980" height="900" loading="lazy">
+    <div class="rodape-dados">
+      <span data-razao></span>
+      <span data-rodape-endereco></span>
+    </div>
+    <div class="rodape-links">
+      <a href="privacidade.html">Política de privacidade</a>
+      <span>© <span data-ano></span> D'Laranja</span>
+    </div>
+  </div>
+</footer>
+
+<a class="whats" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.6S23 3 16 3Zm0 23.1c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.2 1.3-4-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.5 9.8 10.200 5.2 16 5.2s10.5 4.6 10.5 10.4S21.8 26.1 16 26.1Zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.600-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.400c.2.2 2.4 3.6 5.7 5 .8.4 1.4.6 1.9.7.8.3 1.6.2 2.2.1.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></svg>
+</a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

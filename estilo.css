@@ -444,3 +444,5 @@ body.tem-carrinho .whats { bottom: 96px; }
 .momento h1, .momento p, .momento .destaque { text-shadow: 0 2px 28px rgb(0 0 0 / .7), 0 1px 3px rgb(0 0 0 / .5); }
 .painel--vidro { background: radial-gradient(closest-side, rgb(18 15 11 / .6), rgb(18 15 11 / .35) 70%, transparent); box-shadow: none; }
 .painel--vidro { background: radial-gradient(ellipse 75% 70% at 45% 55%, rgb(18 15 11 / .78), rgb(18 15 11 / .55) 50%, transparent 78%); padding-inline: clamp(28px, 4vw, 64px); margin-inline: calc(-1 * clamp(8px, 2vw, 24px)); }
+
+.pagina-pedido .whats { transform: scale(1); }
