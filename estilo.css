@@ -451,3 +451,4 @@ body.tem-carrinho .whats { bottom: 96px; }
 .festa-grade { align-items: start; }
 .calc-chamada p { flex: none; }
 .calc-chamada h3 { font-size: clamp(32px, 4.2vw, 64px); font-weight: 700; line-height: 1.04; margin-bottom: .35em; }
+.calc-chamada p { margin-bottom: 6px; }
